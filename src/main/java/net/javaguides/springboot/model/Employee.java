@@ -1,12 +1,6 @@
-package code.test.employee.salary.model;
-
-
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+package net.javaguides.springboot.model;
 
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,17 +9,8 @@ import javax.persistence.PostLoad;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
-import org.hibernate.validator.constraints.Range;
-
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import code.test.employee.salary.impl.FiscalDate;
 import lombok.Data;
 
 @Data
@@ -49,33 +34,29 @@ public class Employee {
 	@Column(name = "email")
 	private String email;
 
-	@NotNull
+	@NotBlank
 	@Column(name = "phone_number")
-	@ElementCollection(targetClass=String.class)
-	private List<String> phoneNumber;
+	private String phoneNumber;
 
-	@NotNull
+	@NotBlank
 	@Column(name = "joining_date")
-	private Date doj;
+	private String doj;
 
 	@NotNull
 	@Column(name = "monthly_salary")
 	private double monthlySal;
 	
-	@Transient
+	@Column(name = "tax_amount")
 	private double tax;
 	
-	@Transient
+	@Column(name = "cess_amount")
 	private double cess;
 	
 	@Transient
-	private double annualSalary;
+	private Double annualSal;
 
-	
-	 @PostLoad private void onLoad() {
-	 
-		 this.annualSalary= this.monthlySal*12;
-	  }
-	
-	
+	@PostLoad
+	private void onLoad() {
+	    this.annualSal = monthlySal*12;
+	}
 }

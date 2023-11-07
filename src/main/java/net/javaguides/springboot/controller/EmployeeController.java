@@ -1,4 +1,4 @@
-package code.test.employee.salary.controller;
+package net.javaguides.springboot.controller;
 
 import java.util.List;
 
@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import code.test.employee.salary.model.Employee;
-import code.test.employee.salary.service.EmployeeService;
+import net.javaguides.springboot.model.Employee;
+import net.javaguides.springboot.service.EmployeeService;
 
 @RestController
 @RequestMapping("/api/employees")
@@ -34,15 +34,9 @@ public class EmployeeController {
 	}
 	
 	// build get all employees REST API
-	/*@GetMapping
+	@GetMapping
 	public List<Employee> getAllEmployees(){
 		return employeeService.getAllEmployees();
-	}*/
-	
-	// build get all employees REST API getAllEmployeesCurrentFinancialYearSal
-		@GetMapping("/{id}")
-		public ResponseEntity<Employee> getAllEmployeesCurrentFinancialYearSal(@PathVariable("id") long id){
-			return new ResponseEntity<Employee>(employeeService.getAllEmployeesCurrentFinancialYearSal(id), HttpStatus.OK);
-		}
+	}
 	
 }

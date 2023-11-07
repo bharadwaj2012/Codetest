@@ -1,4 +1,4 @@
-package code.test.employee.salary.exception;
+package net.javaguides.springboot.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
