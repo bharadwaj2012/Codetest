@@ -121,20 +121,4 @@ public class EmployeeServiceImpl implements EmployeeService{
 		return lossOfPay;
 	}
 	
-	public static void main(String[] args) throws ParseException {
-		
-		 SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-		 Date givenDate=formatter.parse("11-04-2023");
-	        LocalDate localDate1 = givenDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-	        int year = localDate1.getYear();
-	        String fiscaldate = "31-03-" + year + " 23:59:59";
-	        Date fiscalDate = formatter.parse(fiscaldate);
-	        
-	        if (givenDate.before(fiscalDate)) {
-	            year = year - 1;
-	            
-	        }
-		System.out.println(year);
-	}
-	
 }
